@@ -1,0 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package WebService;
+
+import BD.BD;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.jws.WebService;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+
+/**
+ *
+ * @author u12175
+ */
+@WebService(serviceName = "CalculadoraWS")
+public class CalculadoraWS {
+
+    /**
+     * This is a sample web service operation
+     */
+    @WebMethod(operationName = "hello")
+    public String hello(@WebParam(name = "name") String txt) {
+        return "Hello " + txt + " !";
+    }
+
+    /**
+     * Operação de Web service
+     */
+    @WebMethod(operationName = "conecta")
+    public boolean conecta(@WebParam(name = "usuario") String usuario, @WebParam(name = "senha") String senha) {
+        try {
+            BD bd = new BD("com.microsoft.sqlserver.jdbc.SQLServerDriver",
+                    "jdbc:sqlserver://regulus:1433;databaseName=BD12175",
+                    "BD12175", "BD12175");
+            ResultSet resultadoLogin = bd.execConsulta("select count(*) from usuarioCalculadora where loginUsuario='"+usuario+"' and senhaUsuario='"+senha+"'");
+            resultadoLogin.next();
+            int qtosResultados = Integer.parseInt(resultadoLogin.getString(1));
+            if (qtosResultados>=1) //existe login com tal senha
+                return true;
+            return false;                
+        } catch (Exception ex) {
+            Logger.getLogger(CalculadoraWS.class.getName()).log(Level.SEVERE, null, ex);
+        };
+        return false;
+    }
+}
