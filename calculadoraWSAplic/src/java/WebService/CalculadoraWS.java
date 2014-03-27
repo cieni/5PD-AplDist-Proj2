@@ -49,4 +49,30 @@ public class CalculadoraWS {
         };
         return false;
     }
+    
+    public String soma(String binario1, String binario2){
+        int valor1 = Integer.parseInt(binario1,2); //transforma para decimal
+        int valor2 = Integer.parseInt(binario2,2);
+        int resultado = valor1 + valor2;
+        String resultadoBinario = Integer.toString(resultado,2); //transforma para binário
+        return resultadoBinario;
+    }
+    
+    public String subtracao(String binario1, String binario2){
+        int valor1 = Integer.parseInt(binario1,2); //transforma para decimal
+        int valor2 = Integer.parseInt(binario2,2);
+        int resultado = valor1 - valor2;
+        String resultadoBinario = Integer.toString(resultado,2); //transforma para binário
+        return resultadoBinario;
+    }
+    
+    public String multiplicacao(String binario1, String binario2){
+        int valor1 = Integer.parseInt(binario1,2); //transforma para decimal
+        int valor2 = Integer.parseInt(binario2,2);
+        int resultado = valor1 * valor2;
+        String resultadoBinario = Integer.toString(resultado,2); //transforma para binário
+        return resultadoBinario;
+    }
+    
+    
 }
