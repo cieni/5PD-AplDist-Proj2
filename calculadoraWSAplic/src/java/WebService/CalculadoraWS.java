@@ -38,6 +38,7 @@ public class CalculadoraWS {
             BD bd = new BD("com.microsoft.sqlserver.jdbc.SQLServerDriver",
                     "jdbc:sqlserver://regulus:1433;databaseName=BD12175",
                     "BD12175", "BD12175");
+            usuario = usuario.replace("'","");
             ResultSet resultadoLogin = bd.execConsulta("select count(*) from usuarioCalculadora where loginUsuario='"+usuario+"' and senhaUsuario='"+senha+"'");
             resultadoLogin.next();
             int qtosResultados = Integer.parseInt(resultadoLogin.getString(1));
@@ -50,6 +51,7 @@ public class CalculadoraWS {
         return false;
     }
     
+     @WebMethod(operationName = "soma")
     public String soma(String binario1, String binario2){
         int valor1 = Integer.parseInt(binario1,2); //transforma para decimal
         int valor2 = Integer.parseInt(binario2,2);
@@ -58,6 +60,7 @@ public class CalculadoraWS {
         return resultadoBinario;
     }
     
+     @WebMethod(operationName = "subtracao")
     public String subtracao(String binario1, String binario2){
         int valor1 = Integer.parseInt(binario1,2); //transforma para decimal
         int valor2 = Integer.parseInt(binario2,2);
@@ -66,6 +69,7 @@ public class CalculadoraWS {
         return resultadoBinario;
     }
     
+     @WebMethod(operationName = "multiplicacao")
     public String multiplicacao(String binario1, String binario2){
         int valor1 = Integer.parseInt(binario1,2); //transforma para decimal
         int valor2 = Integer.parseInt(binario2,2);
