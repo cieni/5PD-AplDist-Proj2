@@ -15,7 +15,10 @@ public class CalculadoraWS {
             BD bd = new BD("com.microsoft.sqlserver.jdbc.SQLServerDriver",
                     "jdbc:sqlserver://regulus:1433;databaseName=BD12175",
                     "BD12175", "BD12175");
+            
             usuario = usuario.replace("'", "''");
+            senha = senha.replace("'", "''");
+            
             ResultSet rs = bd.execConsulta("SELECT COUNT(*) AS total FROM usuarioCalculadora WHERE loginUsuario='" + usuario + "' AND senhaUsuario='" + senha + "'");
 
             return rs.next() && rs.getInt("total") > 0;
