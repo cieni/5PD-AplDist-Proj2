@@ -17,11 +17,14 @@ public class Login extends JFrame {
 
     private JTextField txtLogin;
     private JPasswordField txtSenha;
+    private CalculadoraWS ws;
 
-    public Login() {
+    public Login(CalculadoraWS ws) {
+        this.ws = ws;
+        
         setResizable(false);
         setTitle("Login");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.WHITE);
         getContentPane().setLayout(new BorderLayout(0, 0));
 
@@ -50,14 +53,20 @@ public class Login extends JFrame {
         JButton btLogar = new JButton("Logar");
         btLogar.setFont(new Font("Segoe UI Light", Font.PLAIN, 20));
         btLogar.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent arg0) {
+                if (Login.this.ws.conecta(txtLogin.getText(), new String(txtSenha.getPassword()))) {
+                    dispose();
+                    Calculadora calc = new Calculadora(Login.this.ws);
+                }
             }
         });
         panel.add(btLogar, "cell 3 4,alignx right");
-        
+        getRootPane().setDefaultButton(btLogar);
+
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+    
 }

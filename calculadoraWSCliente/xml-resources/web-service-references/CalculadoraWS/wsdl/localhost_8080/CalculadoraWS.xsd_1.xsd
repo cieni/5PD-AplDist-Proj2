@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://WebService/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://WebService/">
+
+<xs:element name="Exception" type="tns:Exception"/>
+
+<xs:element name="conecta" type="tns:conecta"/>
+
+<xs:element name="conectaResponse" type="tns:conectaResponse"/>
+
+<xs:element name="multiplicacao" type="tns:multiplicacao"/>
+
+<xs:element name="multiplicacaoResponse" type="tns:multiplicacaoResponse"/>
+
+<xs:element name="soma" type="tns:soma"/>
+
+<xs:element name="somaResponse" type="tns:somaResponse"/>
+
+<xs:element name="subtracao" type="tns:subtracao"/>
+
+<xs:element name="subtracaoResponse" type="tns:subtracaoResponse"/>
+
+<xs:complexType name="multiplicacao">
+<xs:sequence>
+<xs:element name="num1" type="xs:string" minOccurs="0"/>
+<xs:element name="num2" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="multiplicacaoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="soma">
+<xs:sequence>
+<xs:element name="num1" type="xs:string" minOccurs="0"/>
+<xs:element name="num2" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="somaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="subtracao">
+<xs:sequence>
+<xs:element name="num1" type="xs:string" minOccurs="0"/>
+<xs:element name="num2" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="subtracaoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="conecta">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+<xs:element name="senha" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="conectaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
